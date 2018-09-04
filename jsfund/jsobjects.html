@@ -1,8 +1,34 @@
 <html>
     <head>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body>
+        <button id="click" type="button">Click me bro</button>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <p>AHFHAFHAFW</p>
+        <script>
+            $(document).ready(function() {
+                $('#click').click(function(){
+                    console.log ("click works")
+                    $.get("https://api.github.com/users/DavidJNoh", displayName)
+                    function displayName(data) {
+                        console.log(data.login);
+                        var kek = data.login
+                        $('p').html(kek)
+                    }
+                })
+            });
+        </script>
         <script>
             let arr = [
                 {name: 'Remy', cohort: 'Jan'},
@@ -47,7 +73,30 @@
                     }
                 }
              }
-             sep(users)
-        </script>
-    </body>
+
+             function makePasta(pasta, makeSauce) {
+                console.log("Boiling water");
+                console.log("Putting " + pasta + " pasta in the water");
+                // create a variable for sauce!
+                var sauce = makeSauce();          // invoke makeSauce, our callback
+                console.log("Mixing sauce");
+                console.log("Pasta is done!");
+                return pasta + " Pasta with " + sauce + " sauce! Voila!";
+              }
+              function makePesto() {
+                console.log("Making Pesto");
+                return "pesto";
+              }
+              function makeAlfredo() {
+                console.log("Making Alfredo");
+                return "alfredo";
+              }
+              // we pass the whole makePesto recipe to makePasta!
+              // notice lack of parentheses after makePesto.
+              // Remember: we want to pass the function, not execute it and pass a return value.
+              
+              
+            </script>
+            
+        </body>
 </html>
