@@ -1,0 +1,53 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            let arr = [
+                {name: 'Remy', cohort: 'Jan'},
+                {name: 'Genevieve', cohort: 'March'},
+                {name: 'Chuck', cohort: 'Jan'},
+                {name: 'Osmund', cohort: 'June'},
+                {name: 'Nikki', cohort: 'June'},
+                {name: 'Boris', cohort: 'June'}
+            ];
+            function asuh(arr){                
+                for (var i =0; i<arr.length; i++){
+                    var text = ""
+                        text += "name: " + arr[i].name + " cohort: " + arr[i].cohort;
+                
+                    console.log(text)
+                }
+                return text;
+            }
+            let users = {
+                employees: [
+                    {'first_name':  'Miguel', 'last_name' : 'Jones'},
+                    {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+                    {'first_name' : 'Nora', 'last_name' : 'Lu'},
+                    {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+                ],
+                managers: [
+                   {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+                   {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+                ]
+             };
+             
+            function sep(arr){
+                for (var x in arr){
+                    for (var i = 0 ; i < arr[x].length; i++ ){
+                        if (i == 0){
+                            console.log (x.toUpperCase())
+                        }
+                        let text = ""
+                        let leng = arr[x][i].last_name.length + arr[x][i].first_name.length
+                        text +=  (i+1) + " - " + arr[x][i].last_name + ", " + arr[x][i].first_name + " - " + leng;
+                        console.log(text)
+                    }
+                }
+             }
+             sep(users)
+        </script>
+    </body>
+</html>
