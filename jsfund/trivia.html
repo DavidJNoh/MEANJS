@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button id="100q" type="button">QUESTION</button>
+        <p id="100">100 points</p>
+        <input type="radio"><p id="answer1"></p>  <br>
+        <input type="radio" ><p id="answer2"></p> <br>
+        <input type="radio" ><p id="answer3"></p> <br>
+        <input type="radio"><p id="answer4"></p> <br>
+        <hr>
+        <button id="100qq" type="button">QUESTION</button>
+        <p id="100o">100 points</p>
+        <hr>
+        <button id="200q" type="button">QUESTION</button>
+        <p id="200">200 points</p>
+        <hr>
+        <button id="200qq" type="button">QUESTION</button>
+        <p id="200o">200 points</p>
+        <hr>
+        <button id="300q" type="button">QUESTION</button>
+        <p id="300">300 points</p>
+        <script>
+            $(document).ready(function() {
+                $('#100q').click(function(){
+                    $.get("https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple", easy)
+                    function easy(q) {
+                        console.log(q.results);
+                        for (var i=0; i<q.results.length; i++){
+                            var kek = q.results[i].question
+                            $('#100').html(kek)
+                            $('#answer1').html(q.results[i].incorrect_answers[0])
+                            $('#answer2').html(q.results[i].incorrect_answers[1])
+                            $('#answer3').html(q.results[i].incorrect_answers[2])
+                            $('#answer4').html(q.results[i].correct_answer)
+                            
+                        }
+                    }
+                })
+            });
+            $(document).ready(function() {
+                $('#100qq').click(function(){
+                    $.get("https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple", easy)
+                    function easy(q) {
+                        console.log(q.results);
+                        for (var i=0; i<q.results.length; i++){
+                            var kek = q.results[i].question
+                            $('#100o').html(kek)
+                        }
+                    }
+                })
+            });
+            $(document).ready(function() {
+                $('#200q').click(function(){
+                    $.get("https://opentdb.com/api.php?amount=1&difficulty=medium&type=multiple", easy)
+                    function easy(q) {
+                        console.log(q.results);
+                        for (var i=0; i<q.results.length; i++){
+                            var kek = q.results[i].question
+                            $('#200').html(kek)
+                        }
+                    }
+                })
+            });
+            $(document).ready(function() {
+                $('#200qq').click(function(){
+                    $.get("https://opentdb.com/api.php?amount=1&difficulty=medium&type=multiple", easy)
+                    function easy(q) {
+                        console.log(q.results);
+                        for (var i=0; i<q.results.length; i++){
+                            var kek = q.results[i].question
+                            $('#200o').html(kek)
+                        }
+                    }
+                })
+            });
+            $(document).ready(function() {
+                $('#300q').click(function(){
+                    $.get("https://opentdb.com/api.php?amount=1&difficulty=hard&type=multiple", easy)
+                    function easy(q) {
+                        console.log(q.results);
+                        for (var i=0; i<q.results.length; i++){
+                            var kek = q.results[i].question
+                            $('#300').html(kek)
+                        }
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>
