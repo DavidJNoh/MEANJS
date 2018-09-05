@@ -11,8 +11,24 @@
                 this.showStats = function(){
                     console.log("Name: " + this.name + " , " + "Strength: " + strength + " , " + "Speed: " + speed + " , " + "Health: " + this.health)
                 }
+                this.kick = function(victim){
+                    if (this instanceof Ninja != true || victim instanceof Ninja != true){
+                        console.log ("No");
+                    }
+                    else {
+                        let damage = 15 * strength
+                        victim.health -= damage;
+                        console.log(victim.name + " was kicked by " + this.name + " and lost " + damage + " health!")
+                    }
+                }
+            
             }
             
+            Ninja.prototype.punch = function(victim){
+                victim.health -= 5;
+                console.log(victim.name + " was punched by " + this.name + " and lost 5 health!")
+            }
+
             Ninja.prototype.sayName = function(){
                 console.log(this.name);
             }
@@ -20,11 +36,22 @@
             Ninja.prototype.drinkSake = function(){
                 this.health += 10;
             }
-            var M = new Ninja("M", 21);
-            console.log(M.name);
-            M.drinkSake()
-            M.showStats()
+            
 
+            var M = new Ninja("M", 21);
+            var X = new Ninja("X", 30);
+            //console.log(M.name);
+            //M.drinkSake()
+            //M.showStats()
+            M.punch(X)
+            X.showStats()
+            M.kick(X)
+            X.showStats()
+
+            var Z = "Not a Ninja"
+            
+            M.kick(Z)
+            
             
             
 

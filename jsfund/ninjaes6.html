@@ -1,0 +1,81 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            class Ninja {
+                constructor(name) {
+                self=this;
+                this.name = name;
+                this.health = 100;
+                this.speed = 3;
+                this.strength = 3;
+                }
+                showStats(){
+                    console.log(`Name:  ${this.name}  ,   Strength: ${this.strength} Speed:  ${this.speed} Health: ${this.health}`)
+                }
+                kick(victim){
+                    if (this instanceof Ninja != true || victim instanceof Ninja != true){
+                        console.log (`No`);
+                    }
+                    else {
+                        let damage = 15 * this.strength
+                        victim.health -= damage;
+                        console.log(`${victim.name} was kicked by ${this.name} and lost ${damage}  health!`)
+                    }
+                }
+                
+            }   
+            class Sensei extends Ninja{
+                constructor(name){
+                    super(name);
+                    super.health = 200;
+                    super.speed = 10;
+                    super.strength = 10;
+                    this.wisdom = 10;
+                }
+                showStats(){
+                    console.log(`Name:  ${this.name}  ,   Strength: ${this.strength} Speed:  ${this.speed} Health: ${this.health} Wisdom: ${this.wisdom}`)
+                }
+                    
+            }
+            Ninja.prototype.punch = function(victim){
+                victim.health -= 5;
+                console.log(`${victim.name} was punched by ${this.name} and lost 5 health!`)
+            }
+
+            Ninja.prototype.sayName = function(){
+                console.log(this.name);
+            }
+            
+            Ninja.prototype.drinkSake = function(){
+                this.health += 10;
+            }
+
+            Sensei.prototype.speakWisdom = function(){
+                this.drinkSake();
+                console.log(`What one programmer can do in one month, two programmers can do in two months.`)
+            }
+
+            var M = new Ninja("M");
+            var X = new Ninja("X");
+            //console.log(M.name);
+            
+            
+            M.punch(X)
+            X.showStats()
+            M.kick(X)
+            X.showStats()
+
+            var Z = "Not a Ninja"
+            
+            M.kick(Z)
+            
+            var Y = new Sensei("Y")
+            Y.speakWisdom();
+            Y.showStats();
+            
+        </script>
+    </body>
+</html>
