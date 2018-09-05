@@ -1,0 +1,33 @@
+<html>
+    <head></head>
+    <body>
+        <script>
+            function Ninja(name, age){
+                self=this;
+                this.name = name;
+                this.health = 100;
+                var speed = 3;
+                var strength = 3;
+                this.showStats = function(){
+                    console.log("Name: " + this.name + " , " + "Strength: " + strength + " , " + "Speed: " + speed + " , " + "Health: " + this.health)
+                }
+            }
+            
+            Ninja.prototype.sayName = function(){
+                console.log(this.name);
+            }
+            
+            Ninja.prototype.drinkSake = function(){
+                this.health += 10;
+            }
+            var M = new Ninja("M", 21);
+            console.log(M.name);
+            M.drinkSake()
+            M.showStats()
+
+            
+            
+
+        </script>
+    </body>
+</html>

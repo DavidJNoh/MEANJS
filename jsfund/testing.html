@@ -1,0 +1,31 @@
+<html>
+    <script>
+// Private variables are scoped to the constructor with the 'var' keyword
+function Car(make, model) {
+    var odometer = 0;
+    this.make = make;
+    this.model = model;
+    
+    // To make functions private, we scope them to the constructor
+    
+    // 'Getter' functions help us read private variables
+    this.readOdometer = function() {
+      return odometer;
+    }
+    
+    // 'Setter' functions help us update private variables
+    this.drive = function(distance) {
+        odometer += distance;
+        return this;
+    }
+}
+var myCarInstance = new Car("Chevy", "Camaro");
+// by returning this, we can chain drive()
+myCarInstance.drive(50).drive(100); 
+// private variable is undefined
+console.log(myCarInstance.odometer);
+// but we can read it with our getter function
+console.log(myCarInstance.readOdometer());
+    
+    </script>
+</html>
