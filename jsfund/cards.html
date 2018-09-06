@@ -1,0 +1,83 @@
+<html>
+    <head></head>
+    <body>
+        <script>
+            class Card {
+                constructor(suit,name,value){
+                    this.suit = suit;
+                    this.name = name;
+                    this.value = value;
+                }
+                show(){
+                    console.log(`Suit: ${this.suit}, Name: ${this.name}, Value: ${this.value}`)
+                }
+            }
+
+            class Deck{
+                constructor() {
+                    this.createDeck();
+                }
+
+                createDeck(){
+                    var suits = ["Heart", "Spade", "Diamond", "Club"]
+                    var names = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
+                    this.deck = []
+                    for (var i = 0 ; i < 4 ; i++){
+                        for (var j = 0; j < 13; j++){
+                            var card = new Card(suits[i], names[j], j+1 );
+                            this.deck.push(card)
+                        }
+                    }
+                }
+                show(){
+                    console.log(this.deck)
+                }
+                shuffle(){
+                    for (var i = 0 ; i < this.deck.length ; i++){
+                        var random = Math.floor(Math.random() * this.deck.length);
+                        var temp = this.deck[i];
+                        this.deck[i]= this.deck[random];
+                        this.deck[random]= temp;
+                    }
+                }
+                reset(){
+                    this.createDeck();
+                }
+                deal(){
+                    var dcard = this.deck.pop();
+                    return dcard;
+                }
+            }
+
+            class Player{
+                constructor(name){
+                    this.name = name;
+                    this.hand = [];
+                }
+                draw(x){
+                    this.hand.push(x);
+                    console.log(`${this.name} received ${x.name} ${x.suit}`)
+                    return this
+                }
+                discard(x){
+                    console.log(`${this.hand[x-1].name} ${this.hand[x-1].suit} was discarded`)
+                    for(var i=x-1; i<this.hand.length; i++){
+                        if (i==this.hand.length-1){
+                            this.hand.pop();
+                            return;
+                        }
+                        this.hand[i] = this.hand[i+1]
+                    }
+                }
+            }
+            var deck1 = new Deck();
+            var M = new Player("M",deck1);
+            deck1.shuffle();
+            deck1.show();
+            M.draw(deck1.deal()).draw(deck1.deal()).draw(deck1.deal()).draw(deck1.deal())
+            M.discard(1)
+            console.log(M.hand)
+            
+        </script>
+    </body>
+</html>
