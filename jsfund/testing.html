@@ -1,21 +1,35 @@
 <html>
     <script>
-        class Pizza {
-            constructor(radius, slices) {
-                this.radius = radius;
-                this._slices = slices;
+            function getStuffFromDatabase(resolve,reject){
+                var data = "whee"
+                setTimeout(function(){
+                   //if (typeof(callback) == 'function'){
+                    data = [{name:'Todd'},{name:'Michael'},{name:'Portia'}];
+                    resolve(data);
+                   //}
+                }, 100);
+                //reject(); comment this line in and out!
+                return data;
             }
-            get slices () { 
-                return this._slices; 
+            function requestDataFromDatabase(){
+              console.log('running');
+              //creates promise
+              var data = new Promise(function(resolve,reject){
+                getStuffFromDatabase(resolve,reject); // kind of like a shiny callback
+              });
+              // if promise is successful (keeps me from putting all the logic in the callback)
+              data.then(function(data){
+                console.log(data, "ASynchronous");
+                for (var i = 0; i < data.length; i ++){
+                  console.log(data[i].name);
+                }
+              });
+              data.catch(function(){
+                console.log('failure');
+              })
+              console.log('end');
             }
-            set slices (x) { 
-                this._slices = x;
-            }
-        };
-        const pie = new Pizza(12, 6);
-        console.log(pie.slices);     // we use the getter to determine how many slices we have
-        pie.slices = 15;             // the setter will change the number of slices
-        console.log(pie.slices);     // use the getter again to make sure our slices have doubled
-
+            requestDataFromDatabase();
+            
     </script>
 </html>
