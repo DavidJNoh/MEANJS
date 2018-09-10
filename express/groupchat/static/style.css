@@ -1,0 +1,20 @@
+.chat{
+    width: 700px;
+    height: 400px;
+    border: 1px solid black;
+    overflow: scroll;
+}
+
+.text{
+    margin-top: 10px;
+}
+
+.text form input{
+    min-width: 700px;
+    height: 40px;
+    padding:  10px 7px;
+}
+.text form button{
+    display: block;
+    margin-top: 10px;
+}
