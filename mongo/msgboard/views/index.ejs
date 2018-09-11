@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>MSG Board</title>
+</head>
+<body>
+    <h1>The Dojo Message Board</h1>
+    <hr style="border: solid 0.7px black;">
+    <form style="padding: 40px;" action="/messages" method="post">
+        Name: <input style="display:block;" type="text" name="name">
+        Message: <textarea style="display:block; width:50%;" name="content"></textarea>
+        <button  style="margin-top:10px;" type="submit" class="btn btn-primary">Post Message</button>
+    </form>
+
+    <% for (u of msgs) {%>
+        <div style="padding: 50px;">
+        <h3>Name : <%= u.name %></h3>
+        <h4>Message:  <%= u.content %></h4>
+        <% for (y of u.comments) {%>
+            <div style="padding:30px;">
+            <h4>Name : <%= y.name %></h4>
+            <h5>Message:  <%= y.content %></h5>
+            </div>
+        <% } %>
+
+        <form style="padding: 40px;" action="/comments" method="post">
+            Name: <input style="display:block;" type="text" name="name">
+            Comment: <textarea style="display:block; width:50%;" name="content"></textarea>
+            <button  style="margin-top:10px;" type="submit" class="btn btn-primary">Post Comment</button>
+            <input type="hidden" name="msgid" value=<%= u._id %>>
+        </form>
+        <% if(messages.cmt_error) { %>
+            <% for (var x of messages.cmt_error) { %>
+                <h3><%= x %></h3>
+            <% } %>
+        <% } %>
+        </div>
+    <% } %>
+
+    <% if(messages.msg_error) { %>
+        <% for (var x of messages.msg_error) { %>
+            <h3><%= x %></h3>
+        <% } %>
+    <% } %>
+</body>
+</html>
