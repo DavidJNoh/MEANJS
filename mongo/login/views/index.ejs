@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Talk of Broadway">
+		<meta name="theme-color" content="#000000">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700|Abril+Fatface' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/talk/apps/tob/static/tob/css/login.css">
+		
+
+        <title>Register</title>
+                <style>
+                    label{
+                        margin-top: 10px;
+                    }
+                </style>
+    </head>
+    <body class="text-center">
+        <nav class="navbar navbar-expand-md navbar-dark static-top" style="background-color: #7c8891">
+            <a class="navbar-brand" href="/">Home</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/"></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid row text-center">
+            <form method="POST" action="/register_process" class="form-signin w-25 p-5 mx-auto" style="margin-top:100px;">
+                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+                <label for="inputEmail" >Email address</label>
+                <input type="email" name="email" class="form-control" placeholder="Email address">
+                <label for="inputPassword" >First Name</label>
+                <input type="text" name="first_name" class="form-control" placeholder="First Name" >
+                <label for="inputPassword" >Last Name</label>
+                <input type="text" name="last_name" class="form-control" placeholder="Last Name" >
+                <label for="inputPassword" >Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" >
+                <button class="mx-auto btn btn-lg btn-primary btn-block" style="margin-top:10px;" type="submit">Register</button>
+                <% if(messages.reg_error) { %>
+                    <% for (var x of messages.reg_error) { %>
+                        <h3 style="color:red"><%= x %></h3>
+                    <% } %>
+                <% } %>
+            </form>
+            <form action="/login_process"  method="POST" class="form-signin w-25 p-5 mx-auto" style="margin-top:150px;">
+                <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+                <label for="inputEmail" >Email address</label>
+                <input type="email" name="email" class="form-control" placeholder="Email address"  autofocus>
+                <label for="inputPassword" >Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" >
+                <button class="mx-auto btn btn-lg btn-primary" style="margin-top:10px; margin-bottom:40px;" type="submit" >Sign in</button>
+                <% if(messages.log_error) { %>
+                    <% for (var x of messages.log_error) { %>
+                        <h3 style="color:red"><%= x %></h3>
+                    <% } %>
+                <% } %>
+            </form>
+        </div>
+     </body>
+</html>

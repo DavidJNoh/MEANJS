@@ -1,14 +1,16 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var session = require("express-session")
 app.use(bodyParser.urlencoded({ extended: true }));
 var path = require('path');
 var mongoose = require('mongoose')
 const flash = require('express-flash');
 mongoose.connect('mongodb://localhost/basic_mongoose') , { useNewUrlParser: true }
 mongoose.Promise = global.Promise;
+const bcrypt = require('bcrypt-as-promised');
 
+var session = require("express-session")
+app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     secret: "dankmemesareneverdankenough",
     resave: false,
@@ -122,6 +124,44 @@ app.post('/users', function(req, res) {
 //         }
 //     });
 // });
+
+
+//session
+
+// app.post('/sessions', (req, res) => {
+//     console.log(" req.body: ", req.body);
+//     User.findOne({email:req.body.email, password: req.body.password}, (err, user) => {
+//         if (err) {
+//             // Code...
+//         }
+//         else {
+//             // Code...
+//     		req.session.user_id = user._id;
+// 		req.session.email = user.email;
+//         }
+//     })
+// })
+
+//bcrypt stuff
+
+// bcrypt.hash('password_from_form', 10)
+// .then(hashed_password => {
+	 
+// })
+// .catch(error => {
+	 
+// });
+
+// bcrypt.compare('password_from_form', 'stored_hashed_password')
+// .then( result => {
+	 
+// })
+// .catch( error => {
+	 
+// })
+
+
+
 
 
 app.listen(8000, function() {

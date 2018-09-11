@@ -22,12 +22,12 @@ app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
 const CommentSchema = new mongoose.Schema({
-    name: {type: String, required: [true, "Comment must have an author"], minlength: [1, "Name must have at least 1 characters"]},
-    content: {type: String, required: [true, "Comment can not be empty"]}
+    name: {type: String, required: [true, "*Comment must have an author"], minlength: [1, "Name must have at least 1 characters"]},
+    content: {type: String, required: [true, "*Comment can not be empty"]}
   }, {timestamps: true})
 const MessageSchema = new mongoose.Schema({
-    name: {type: String, required: [true, "Message must have an author"], minlenght: [3, "Name must be at least 1 characters"]},
-    content: {type: String, required: [true, "Message can not be empty"]},
+    name: {type: String, required: [true, "*Message must have an author"], minlenght: [3, "Name must be at least 1 characters"]},
+    content: {type: String, required: [true, "*Message can not be empty"]},
     comments: [CommentSchema]
   }, {timestamps: true})
 
