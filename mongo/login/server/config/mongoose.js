@@ -1,0 +1,1 @@
+var models_path = path.join(__dirname, '../models');
