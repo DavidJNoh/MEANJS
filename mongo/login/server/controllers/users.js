@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 var mongoose = require('mongoose')
-var User = mongoose.model('User') // We are retrieving this Schema from our Models, named 'User'
+var User = mongoose.model('User')
 
 module.exports = {
     index: function(req, res) {
