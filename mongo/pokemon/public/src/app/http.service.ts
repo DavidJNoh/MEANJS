@@ -2,60 +2,36 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class HttpService {
-  constructor(private _http: HttpClient) { 
-      this.xyz();
-      this.wxyz();
-      this.moreAPI();
-      this.thenmoreAPI();
+  constructor(private _http: HttpClient) {
   }
   xyz(){
-      let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-      bulbasaur.subscribe(pokemoninfo => 
-        console.log("Hi", pokemoninfo)
+      // let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
+      // bulbasaur.subscribe(pokemoninfo => 
+      //   console.log("Hi", pokemoninfo)
 
-      );
+      // );
+      return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
   }
   wxyz(){
-      let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-      bulbasaur.subscribe(pokemoninfo => 
-        console.log("Base EXP", pokemoninfo["base_experience"])
+      return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
 
-      );
   }
   moreAPI(){
-      let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-      bulbasaur.subscribe(pokemoninfo => 
-        {let btb = this._http.get(pokemoninfo["abilities"][1]["ability"]["url"])
-        btb.subscribe(abilityinfo =>
-            console.log("# of pokemon with ability Overgrowth   " + abilityinfo["pokemon"].length)
-        )
-
-        }
-      
-      );
-
-    
+      return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
   }
-  thenmoreAPI(){
-      let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-      bulbasaur.subscribe(pokemoninfo => 
-        {let btb = this._http.get(pokemoninfo["abilities"][1]["ability"]["url"])
-        btb.subscribe(abilityinfo =>
-            {for ( var i =0; i< abilityinfo["pokemon"].length; i++){
-                console.log ("Pokemon W/ overgrowth " + (i+1) + " " + abilityinfo["pokemon"][i]["pokemon"]["name"])
-            }
-          }
-        )
 
-        }
-      
-      );
-
-    
+  apiInception(x){
+      return this._http.get(x);
   }
+  postToServer(num){
+        // use the .post() method of HttpClient
+        // num must be an object
+        // provide the url of your post route - make sure this is set up in your server!
+        return this._http.post('/link', num);  
+    }
 
 
 }

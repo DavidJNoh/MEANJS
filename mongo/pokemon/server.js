@@ -16,6 +16,11 @@ var UserSchema = new mongoose.Schema({
 mongoose.model('User', UserSchema);
 var User = mongoose.model('User')
 
+app.post('/link', function(req,res){
+    console.log(req.body)
+    res.json({message: "Good Job David"})
+})
+
 app.listen(8000, function() {
     console.log("listening on port 8000");
 })

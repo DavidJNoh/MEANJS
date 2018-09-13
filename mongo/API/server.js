@@ -44,13 +44,13 @@ app.get('/users/:id', function(req, res){
      })
 })  
 
-app.post('/users/:id', function(req, res){
-    console.log(req.params.id)
-    User.create({name:req.params.id}, function(err, people){
+app.post('/users', function(req, res){
+    console.log(req.body)
+    User.create({"name": req.body.name}, function(err, people){
         if(err){
             console.log("Returned error", err);
             res.json({message: "Error", error: err})
-         }
+        }
         else {
             res.json({message: "Success", data: people})
         }
@@ -59,7 +59,7 @@ app.post('/users/:id', function(req, res){
 })
 
 app.put('/users/:id', function(req, res){
-    User.find({name:req.params.id}, function(err, people){
+    User.update({_id:req.params.id}, {$set:req.body} ,function(err, people){
         if(err){
            console.log("Returned error", err);
             // respond with JSON
@@ -86,6 +86,6 @@ app.delete('/users/:id', function(req, res){
 
 })
 
-app.listen(8000, function() {
+app.listen(4500, function() {
     console.log("listening on port 8000");
 })
